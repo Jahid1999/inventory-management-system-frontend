@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\layouts",
+    "\\src\\app\\layouts\\admin-layout",
+    "\\src\\app\\login-layout",
+    "\\src\\app\\services",
+    "\\src\\assets",
+    "\\src\\assets\\img"
+  ],
+  "SelectedNode": "\\src\\app\\login-layout\\login-layout.component.ts",
+  "PreviewInSolutionExplorer": false
+}

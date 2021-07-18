@@ -9,16 +9,26 @@ export class AdminService {
 
   constructor(private formbuilder: FormBuilder, private http: HttpClient) { } 
 
-    public apiUrl = "http://localhost:5000/api/product";
+    public apiUrl = "http://localhost:5000/api";
 
   
-    public getAllProducts() {
+    public updateAdmin(edit_info) {
+
       var user = JSON.parse(localStorage.getItem('isLoggedIn'));
-      var header = {
-        headers: new HttpHeaders()
-          .set('Authorization',  `Bearer ${user.token}`)
-      };
+      var body = {
+        "id": edit_info.id,
+        "name": edit_info.name,
+        "email": edit_info.email,
+        "password": edit_info.password,
+    }
+
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${user.token}`)
+    };
+
+    // let options = new RequestOptions({headers: headers});
   
-        return this.http.get<any>(this.apiUrl, header);
+      return this.http.put<any>(this.apiUrl + "/admin/update", body, header);
     }
 }

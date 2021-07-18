@@ -1,0 +1,78 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-warning">
+                <h3 class="card-title ">Products</h3>
+                <p class="card-category text-primary">All Products List</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-primary text-center">
+                            <th> Name </th>
+                            <th> Description </th>
+                            <th> Unit </th>
+                            <th> Unit Price </th>
+                            <th> Actions </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of products" class="text-center">
+                                <td> {{product.name}} </td>
+                                <td> {{product.description}} </td>
+                                <td> {{product.unit}} </td>
+                                <td> {{product.price}} </td>
+                                <td>
+                                    <button mat-raised-button type="button" (click)="openEditModal(product)"  class="btn btn-danger pull-right" data-toggle="modal" data-target="#exampleModal">
+                                        Edit</button>                     
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color:indianred">
+                  <h3 class="modal-title" id="exampleModalLabel">Edit Product</h3>
+                  <button type="button" #closebutton class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div>
+                      <div class="form-group">
+                        <label for="name"><b>Name</b></label>
+                        <input required class="form-control" name="name" [(ngModel)]="productEditForm.name" placeholder="Enter Product Name" >
+                      </div>
+                      <div class="form-group">
+                        <label for="description"><b>Description</b></label>
+                        <input required class="form-control" name="description" [(ngModel)]="productEditForm.description"  placeholder="Enter Product Description">
+                      </div>
+                      <div class="form-group">
+                        <label for="unit"><b>Unit</b></label>
+                        <input required class="form-control" name="unit" [(ngModel)]="productEditForm.unit"  placeholder="Enter Unit">
+                      </div>
+                      <div class="form-group">
+                        <label for="price"><b>Unit Price</b></label>
+                        <input type="number" required class="form-control" name="price" [(ngModel)]="productEditForm.price"  placeholder="Enter Unit Price">
+                      </div>
+                    
+                    </div>
+                </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success" (click)="updateProduct()"  class="btn btn-primary">Update</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

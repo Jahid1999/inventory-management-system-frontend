@@ -24,8 +24,6 @@ export class DashboardComponent implements OnInit {
       (response: any) => {
           if (response) {
               this.products = response;
-              console.log(this.products);
-              console.log(response.status);
           }
           else {
               console.log("not succeed");

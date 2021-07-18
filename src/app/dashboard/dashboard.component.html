@@ -20,9 +20,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header card-header-success">
-                        <h3 class="card-title ">Products</h3>
-                        <p class="card-category text-primary">All Products List</p>
+                    <div class="card-header card-header-warning">
+                        <h3 class="card-title ">Stock List</h3>
+                        <p class="card-category text-primary">All Products Stock List</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -37,7 +37,7 @@
                                 <tbody>
                                     <tr *ngFor="let product of products" class="text-center">
                                         <td> {{product.name}} </td>
-                                        <td> {{product.nescription}} </td>
+                                        <td> {{product.description}} </td>
                                         <td> {{product.unit}} </td>
                                         <td> {{product.price}} </td>
                                         <td> {{product.quantity}} </td>

@@ -9,7 +9,7 @@ export class ProductService {
 
     constructor(private formbuilder: FormBuilder, private http: HttpClient) { } 
 
-    public URL = "http://localhost:5000/api/product";
+    public apiUrl = "http://localhost:5000/api/product";
 
   
     public getAllProducts() {
@@ -19,7 +19,28 @@ export class ProductService {
           .set('Authorization',  `Bearer ${user.token}`)
       };
   
-        return this.http.get<any>(this.URL, header);
+        return this.http.get<any>(this.apiUrl, header);
     }
+
+    public updateProduct(edit_info) {
+      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var body = {
+        "id": edit_info.id,
+        "name": edit_info.name,
+        "description": edit_info.description,
+        "unit": edit_info.unit,
+        "price": edit_info.price,
+    }
+
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${user.token}`)
+    };
+
+    // let options = new RequestOptions({headers: headers});
+  
+      return this.http.put<any>(this.apiUrl + "/update", body, header);
+    }
+    
 
 }

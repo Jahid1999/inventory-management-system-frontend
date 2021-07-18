@@ -1,5 +1,22 @@
 <div class="main-content">
     <div class="container-fluid">
+        <h4>Useful Links</h4>
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-4">
+                <button mat-raised-button class="btn btn-primary" (click)="redirectOnClick('table-list')">
+                    Products
+               </button>
+            </div>
+            <div class="col-md-4">
+                <button mat-raised-button class="btn btn-info" (click)="redirectOnClick('typography')">
+                    Reports
+               </button>
+            </div>
+
+        </div>
+        <hr>
+
+        <h4>All Products List</h4>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -10,7 +27,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
-                                <thead class=" text-primary">
+                                <thead class="text-primary text-center">
                                     <th> Name </th>
                                     <th> Description </th>
                                     <th> Unit </th>
@@ -18,7 +35,7 @@
                                     <th> Quantity </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of products">
+                                    <tr *ngFor="let product of products" class="text-center">
                                         <td> {{product.name}} </td>
                                         <td> {{product.nescription}} </td>
                                         <td> {{product.unit}} </td>

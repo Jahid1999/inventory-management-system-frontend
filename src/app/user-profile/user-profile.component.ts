@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
+ public userinfo = {
+    name: '',
+    email: '',
+    password: ''
+  };
+
   constructor() { }
 
   ngOnInit() {
+     var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+     this.userinfo.name = user.data.name;
+     this.userinfo.email = user.data.email;
+     this.userinfo.password = user.data.password;
+     console.log(user.data);
   }
 
 }

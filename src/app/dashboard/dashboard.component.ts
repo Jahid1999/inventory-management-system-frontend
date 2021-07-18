@@ -14,6 +14,10 @@ export class DashboardComponent implements OnInit {
   public products: Product [] = [] ;
 
   constructor(public service: ProductService, private router: Router) { }
+
+  public redirectOnClick(path: string) {
+    this.router.navigateByUrl(path);
+  }
  
   ngOnInit() {
     this.service.getAllProducts().subscribe(

@@ -183,7 +183,7 @@
                       </div>
                       <div class="form-group">
                         <label for="quantity"><b>Quantity</b></label>
-                        <input type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Unit">
+                        <input type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Quantity">
                       </div>
                       <div class="form-group">
                         <label for="price"><b>Total Price</b></label>
@@ -197,6 +197,47 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-success" (click)="purchaseProduct()">Purchase</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="saleModal" tabindex="-1" role="dialog" aria-labelledby="saleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color:cornflowerblue">
+                  <h3 class="modal-title" id="exampleModalLabel">Sale {{selectedProduct.name}} </h3>
+                  <button type="button" #closesalebutton class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div>
+                      <div class="form-group">
+                        <label for="name"><b>Product</b></label>
+                        <input disabled class="form-control" name="name" [(ngModel)]="selectedProduct.name" placeholder="Enter Product Name" >
+                      </div>
+                      <div class="form-group">
+                        <label for="up"><b>Unit Price</b></label>
+                        <input disabled class="form-control" name="up" [(ngModel)]="selectedProduct.price"  placeholder="Enter Product Description">
+                      </div>
+                      <div class="form-group">
+                        <label for="quantity"><b>Quantity</b> <span style="color: red;"> [ Available Quantity {{ selectedProduct.quantity }} ] </span></label>
+                        <input type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Quantity">
+                      </div>
+                      <div class="form-group">
+                        <label for="price"><b>Total Price</b></label>
+                        <input type="number" disabled required class="form-control" name="price" [(ngModel)]="stockForm.totalprice"  placeholder="Enter Unit Price">
+                      </div>
+                    
+                    </div>
+                </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success" (click)="saleProduct()">Sale</button>
                 </div>
               </div>
             </div>

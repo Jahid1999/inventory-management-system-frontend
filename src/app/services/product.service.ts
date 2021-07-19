@@ -80,6 +80,25 @@ export class ProductService {
       return this.http.post<any>(this.apiUrl + "/purchase", body, header);
     }
 
+    public saleProduct(info) {
+      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var body = {
+        "type": info.type,
+        "productid":info.productid,
+        "quantity": info.quantity,
+        "totalprice": info.totalprice,
+    }
+
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${user.token}`)
+    };
+
+    // let options = new RequestOptions({headers: headers});
+  
+      return this.http.post<any>(this.apiUrl + "/sale", body, header);
+    }
+
     public deleteProduct(id) {
       var user = JSON.parse(localStorage.getItem('isLoggedIn'));
     

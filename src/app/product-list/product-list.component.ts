@@ -29,7 +29,18 @@ export class TableListComponent implements OnInit {
     price: null
   }
 
+  public stockForm = {
+   productid: null,
+   type: null,
+   quantity: 0,
+   totalprice: 0,
+  }
+
   public id_delete = null;
+  public selectedProduct = {
+    name: '',
+    price: null,
+  };
 
   constructor(public service: ProductService, private router: Router) { }
 
@@ -44,6 +55,46 @@ export class TableListComponent implements OnInit {
     this.productEditForm.unit = product.unit;
     this.productEditForm.price = product.price;
  }
+
+ public openPurchaseModal(product) {
+    this.stockForm.productid = product.id;
+    this.stockForm.type = 1;
+
+    this.selectedProduct.name = product.name;
+    this.selectedProduct.price = product.price;
+ }
+
+ public openSaleModal(product) {
+  this.stockForm.productid = product.id;
+  this.stockForm.type = 0;
+
+  this.selectedProduct.name = product.name;
+  this.selectedProduct.price = product.price;
+}
+
+public calculateTotalPrice(event: Event) {
+  var quantity = (event.target as HTMLInputElement).value;
+  this.stockForm.totalprice = this.selectedProduct.price * this.stockForm.quantity;
+}
+
+public purchaseProduct() {
+  this.stockForm.totalprice = this.selectedProduct.price * this.stockForm.quantity;
+  this.service.purchaseProduct(this.stockForm).subscribe(
+    (response: any) => {
+        if (response) {
+            this.closeeditbutton.nativeElement.click();
+            this.getProducts();
+        }
+        else {
+            console.log("not succeed");
+        }
+        
+    },
+    // error => {
+    //   console.error('There was an error ball!');
+      // }
+  );
+}
 
  public updateProduct() {
   this.service.updateProduct(this.productEditForm).subscribe(
@@ -86,15 +137,14 @@ export class TableListComponent implements OnInit {
       this.service.deleteProduct(this.id_delete).subscribe(
         (response: any) => {
           console.log('res=' + response);
-            if (response) {
               this.closedeletebutton.nativeElement.click();
               this.getProducts();
-            }
+            
           },
-          error => {
-            this.closedeletebutton.nativeElement.click();
-            this.getProducts();
-        }
+        //   error => {
+        //     this.closedeletebutton.nativeElement.click();
+        //     this.getProducts();
+        // }
       );
       
     }

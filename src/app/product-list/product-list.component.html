@@ -36,7 +36,16 @@
                                     <button mat-raised-button type="button" (click)="setDeleteId(product)" class="btn btn-danger pull-right" data-toggle="modal" data-target="#deleteModal">
                                       <i class="material-icons">delete</i> 
                                       Delete
-                                    </button>                     
+                                    </button>
+                                    <button mat-raised-button type="button" (click)="openPurchaseModal(product)" style="background-color:darkseagreen;" class="btn pull-right" data-toggle="modal" data-target="#purchaseModal">
+                                      <i class="material-icons">shopping_cart</i> 
+                                      Purchase
+                                    </button>  
+                                    
+                                    <button mat-raised-button type="button" (click)="openSaleModal(product)" style="background-color:indianred;" class="btn pull-right" data-toggle="modal" data-target="#saleModal">
+                                      <i class="material-icons">remove_shopping_cart</i> 
+                                      Sale
+                                    </button>  
                                 </td>
                             </tr>
                         </tbody>
@@ -147,6 +156,47 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
                   <button type="button" class="btn btn-danger" (click)="deleteProduct()">Yes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color:cornflowerblue">
+                  <h3 class="modal-title" id="exampleModalLabel">Purchase {{selectedProduct.name}} </h3>
+                  <button type="button" #closepurchasebutton class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div>
+                      <div class="form-group">
+                        <label for="name"><b>Product</b></label>
+                        <input disabled class="form-control" name="name" [(ngModel)]="selectedProduct.name" placeholder="Enter Product Name" >
+                      </div>
+                      <div class="form-group">
+                        <label for="up"><b>Unit Price</b></label>
+                        <input disabled class="form-control" name="up" [(ngModel)]="selectedProduct.price"  placeholder="Enter Product Description">
+                      </div>
+                      <div class="form-group">
+                        <label for="quantity"><b>Quantity</b></label>
+                        <input type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Unit">
+                      </div>
+                      <div class="form-group">
+                        <label for="price"><b>Total Price</b></label>
+                        <input type="number" disabled required class="form-control" name="price" [(ngModel)]="stockForm.totalprice"  placeholder="Enter Unit Price">
+                      </div>
+                    
+                    </div>
+                </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success" (click)="purchaseProduct()">Purchase</button>
                 </div>
               </div>
             </div>

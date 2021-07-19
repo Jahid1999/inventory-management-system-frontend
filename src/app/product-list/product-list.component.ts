@@ -52,6 +52,7 @@ export class TableListComponent implements OnInit {
   public redirectOnClick(path: string) {
     this.router.navigateByUrl(path);
   }
+
 // open modals
 
   public openEditModal(product) {

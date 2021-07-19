@@ -18,8 +18,18 @@ export class ProductService {
         headers: new HttpHeaders()
           .set('Authorization',  `Bearer ${user.token}`)
       };
-  
+
         return this.http.get<any>(this.apiUrl, header);
+    }
+
+    public getProductById(id) {
+      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var header = {
+        headers: new HttpHeaders()
+          .set('Authorization',  `Bearer ${user.token}`)
+      };
+
+        return this.http.get<any>(this.apiUrl + `/${id}`, header);
     }
 
     public updateProduct(edit_info) {

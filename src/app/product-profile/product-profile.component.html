@@ -1,0 +1,93 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h3 class="card-title">Product Profile</h3>
+                        <p class="card-category" style="color: black;"> {{product.name}} </p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div>
+                              <div class="form-group">
+                                <label>Name</label>
+                                <input required disabled class="form-control" name="name" :value={{product.name}} >
+                              </div>
+                              <div class="form-group">
+                                <label>Description</label>
+                                <input required disabled class="form-control" name="des" :value={{product.description}} >
+                              </div>
+                              <div class="form-group">
+                                <label>Unit</label>
+                                <input required disabled class="form-control" name="unit" :value={{product.unit}} >
+                              </div>
+                              <div class="form-group">
+                                <label>Unit Price</label>
+                                <input required disabled class="form-control" name="price" :value={{product.price}} >
+                              </div>
+                              <div class="form-group">
+                                <label>Quantity</label>
+                                <input required disabled class="form-control" name="emquantityail" :value={{product.quantity}} >
+                              </div>
+                            
+                            </div>
+                          
+                            <button mat-raised-button type="button" (click)="openEditModal()" class="btn btn-danger pull-right" data-toggle="modal" data-target="#exampleModal">
+                              Edit</button>
+                            <div class="clearfix"></div>
+                        </form>
+  
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header" style="background-color: darkcyan;">
+                                <h3 class="modal-title" id="exampleModalLabel">Edit Product</h3>
+                                <button type="button" #closeeditbutton class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form>
+                                  <div>
+                                    <div class="form-group">
+                                      <label for="name"><b>Name</b></label>
+                                      <input required class="form-control" name="name" [(ngModel)]="productForm.name" placeholder="Enter Name" >
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="des"><b>Description</b></label>
+                                      <input required class="form-control" name="des" [(ngModel)]="productForm.description"  placeholder="Enter Description">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="unit"><b>Unit</b></label>
+                                        <input required class="form-control" name="unit" [(ngModel)]="productForm.unit"  placeholder="Enter Unit">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price"><b>Unit Price</b></label>
+                                        <input required class="form-control" name="price" [(ngModel)]="productForm.price"  placeholder="Enter Unit Price">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="quantity"><b>Quantity</b></label>
+                                        <input disabled required class="form-control" name="quantity" [(ngModel)]="productForm.quantity"  placeholder="Enter Description">
+                                    </div>
+                                    
+                                  </div>
+                              </form>
+        
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger" (click)="updateProduct()" class="btn btn-primary">Update</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  </div>
+  

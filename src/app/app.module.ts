@@ -18,6 +18,7 @@ import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
+import { ProductProfileComponent } from './product-profile/product-profile.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { LoginLayoutComponent } from './login-layout/login-layout.component';
       AppComponent,
       AdminLayoutComponent,
       LoginLayoutComponent,
+      ProductProfileComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

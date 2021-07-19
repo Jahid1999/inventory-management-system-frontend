@@ -29,10 +29,14 @@
                                 <td> {{product.unit}} </td>
                                 <td> {{product.price}} </td>
                                 <td>
-                                    <button mat-raised-button type="button" (click)="openEditModal(product)" class="btn btn-primary pull-right" data-toggle="modal" data-target="#editModal">
-                                      <i class="material-icons">add</i> 
+                                    <button mat-raised-button type="button" (click)="openEditModal(product)" style="background-color: darkslateblue;" class="btn pull-right" data-toggle="modal" data-target="#editModal">
+                                      <i class="material-icons">edit</i> 
                                       Edit
-                                      </button>                     
+                                    </button> 
+                                    <button mat-raised-button type="button" (click)="setDeleteId(product)" class="btn btn-danger pull-right" data-toggle="modal" data-target="#deleteModal">
+                                      <i class="material-icons">delete</i> 
+                                      Delete
+                                    </button>                     
                                 </td>
                             </tr>
                         </tbody>
@@ -118,6 +122,31 @@
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-success" (click)="createProduct()">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color:darkorange">
+                  <h3 class="modal-title" id="exampleModalLabel">Delete Product</h3>
+                  <button type="button" #closedeletebutton class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <b>
+                      Once you delete a product, you can not undo your action. Do you want to delete the product?
+                    </b>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-danger" (click)="deleteProduct()">Yes</button>
                 </div>
               </div>
             </div>

@@ -11,6 +11,7 @@ import { ProductService } from 'app/services/product.service';
 export class TableListComponent implements OnInit {
   @ViewChild('closeeditbutton') closeeditbutton;
   @ViewChild('closeaddbutton') closeaddbutton;
+  @ViewChild('closedeletebutton') closedeletebutton;
 
   public products: Product [] = [] ;
   public productEditForm = {
@@ -27,6 +28,8 @@ export class TableListComponent implements OnInit {
     unit: '',
     price: null
   }
+
+  public id_delete = null;
 
   constructor(public service: ProductService, private router: Router) { }
 
@@ -67,15 +70,33 @@ export class TableListComponent implements OnInit {
               this.closeaddbutton.nativeElement.click();
               this.getProducts();
           }
-          else {
-              console.log("not succeed");
-          }
           
       },
       // error => {
       //   console.error('There was an error ball!');
         // }
-    );
+      );
+    }
+
+    public setDeleteId(product) {
+        this.id_delete = product.id
+    }
+
+    public deleteProduct () {
+      this.service.deleteProduct(this.id_delete).subscribe(
+        (response: any) => {
+          console.log('res=' + response);
+            if (response) {
+              this.closedeletebutton.nativeElement.click();
+              this.getProducts();
+            }
+          },
+          error => {
+            this.closedeletebutton.nativeElement.click();
+            this.getProducts();
+        }
+      );
+      
     }
 
   private getProducts() {

@@ -61,4 +61,15 @@ export class ProductService {
       return this.http.post<any>(this.apiUrl + "/add", body, header);
     }
 
+    public deleteProduct(id) {
+      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+    
+      const header = {
+        headers: new HttpHeaders()
+          .set('Authorization',  `Bearer ${user.token}`)
+      };
+  
+      return this.http.delete<any>(this.apiUrl + "/delete/" + id, header);
+    }
+
 }

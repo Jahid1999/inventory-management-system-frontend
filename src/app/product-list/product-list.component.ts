@@ -3,6 +3,8 @@ import { Product } from 'app/model/Product';
 import { Router } from '@angular/router';
 import { ProductService } from 'app/services/product.service';
 
+declare var $: any;
+
 @Component({
   selector: 'app-table-list',
   templateUrl: './product-list.component.html',
@@ -98,15 +100,13 @@ public purchaseProduct() {
           if (response) {
               this.closepurchasebutton.nativeElement.click();
               this.getProducts();
+              this.showSuccessMessage();
           }
-          else {
-              console.log("not succeed");
-          }
-          
       },
-      // error => {
-      //   console.error('There was an error ball!');
-        // }
+      error => {
+        this.closepurchasebutton.nativeElement.click();
+        this.showErrorMessage();
+        }
     );
 }
 
@@ -119,12 +119,14 @@ public saleProduct() {
           if (response) {
               this.closesalebutton.nativeElement.click();
               this.getProducts();
+              this.showSuccessMessage();
           }
           
       },
-      // error => {
-      //   console.error('There was an error ball!');
-        // }
+      error => {
+        this.closesalebutton.nativeElement.click();
+        this.showErrorMessage();
+        }
     );
 }
 
@@ -136,15 +138,14 @@ public saleProduct() {
           if (response) {
               this.closeeditbutton.nativeElement.click();
               this.getProducts();
+              this.showSuccessMessage();
           }
-          else {
-              console.log("not succeed");
-          }
-          
+         
       },
-      // error => {
-      //   console.error('There was an error ball!');
-        // }
+      error => {
+        this.closeeditbutton.nativeElement.click();
+        this.showErrorMessage();
+      }
     );
   }
 
@@ -156,12 +157,14 @@ public saleProduct() {
             if (response) {
                 this.closeaddbutton.nativeElement.click();
                 this.getProducts();
+                this.showSuccessMessage();
             }
             
         },
-        // error => {
-        //   console.error('There was an error ball!');
-          // }
+        error => {
+          this.closeaddbutton.nativeElement.click();
+          this.showErrorMessage();
+        }
         );
     }
 
@@ -174,15 +177,14 @@ public saleProduct() {
     public deleteProduct () {
         this.service.deleteProduct(this.id_delete).subscribe(
           (response: any) => {
-            console.log('res=' + response);
                 this.closedeletebutton.nativeElement.click();
                 this.getProducts();
-              
+                this.showSuccessMessage();
             },
-          //   error => {
-          //     this.closedeletebutton.nativeElement.click();
-          //     this.getProducts();
-          // }
+            error => {
+              this.closedeletebutton.nativeElement.click();
+              this.showErrorMessage();
+          }
         );
       
     }
@@ -203,4 +205,57 @@ public saleProduct() {
     this.getProducts();
   }
 
+  // notifications
+
+  private showSuccessMessage() {
+  
+    $.notify({
+        icon: "notifications",
+        message: "Your request successfully completed!!"
+
+    },{
+        type: 'success',
+        timer: 4000,
+        placement: {
+            from: 'top',
+            align: 'center'
+        },
+        template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
+          '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
+          '<i class="material-icons" data-notify="icon">notifications</i> ' +
+          '<span data-notify="title">{1}</span> ' +
+          '<span data-notify="message">{2}</span>' +
+          '<div class="progress" data-notify="progressbar">' +
+            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+          '</div>' +
+          '<a href="{3}" target="{4}" data-notify="url"></a>' +
+        '</div>'
+    });
+  }
+
+  private showErrorMessage() {
+  
+    $.notify({
+        icon: "notifications",
+        message: "Sorry!! Couldn't complete you request for some errors! Please try again."
+
+    },{
+        type: 'danger',
+        timer: 4000,
+        placement: {
+            from: 'top',
+            align: 'center'
+        },
+        template: '<div data-notify="container" class="col-xl-4 col-lg-4 col-11 col-sm-4 col-md-4 alert alert-{0} alert-with-icon" role="alert">' +
+          '<button mat-button  type="button" aria-hidden="true" class="close mat-button" data-notify="dismiss">  <i class="material-icons">close</i></button>' +
+          '<i class="material-icons" data-notify="icon">notifications</i> ' +
+          '<span data-notify="title">{1}</span> ' +
+          '<span data-notify="message">{2}</span>' +
+          '<div class="progress" data-notify="progressbar">' +
+            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+          '</div>' +
+          '<a href="{3}" target="{4}" data-notify="url"></a>' +
+        '</div>'
+    });
+  }
 }

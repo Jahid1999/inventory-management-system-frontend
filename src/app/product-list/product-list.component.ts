@@ -9,11 +9,19 @@ import { ProductService } from 'app/services/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class TableListComponent implements OnInit {
-  @ViewChild('closebutton') closebutton;
+  @ViewChild('closeeditbutton') closeeditbutton;
+  @ViewChild('closeaddbutton') closeaddbutton;
 
   public products: Product [] = [] ;
   public productEditForm = {
     id: null,
+    name: '',
+    description: '',
+    unit: '',
+    price: null
+  }
+
+  public productAddForm = {
     name: '',
     description: '',
     unit: '',
@@ -33,11 +41,12 @@ export class TableListComponent implements OnInit {
     this.productEditForm.unit = product.unit;
     this.productEditForm.price = product.price;
  }
+
  public updateProduct() {
   this.service.updateProduct(this.productEditForm).subscribe(
     (response: any) => {
         if (response) {
-            this.closebutton.nativeElement.click();
+            this.closeeditbutton.nativeElement.click();
             this.getProducts();
         }
         else {
@@ -50,6 +59,24 @@ export class TableListComponent implements OnInit {
       // }
   );
   }
+
+  public createProduct() {
+    this.service.createProduct(this.productAddForm).subscribe(
+      (response: any) => {
+          if (response) {
+              this.closeaddbutton.nativeElement.click();
+              this.getProducts();
+          }
+          else {
+              console.log("not succeed");
+          }
+          
+      },
+      // error => {
+      //   console.error('There was an error ball!');
+        // }
+    );
+    }
 
   private getProducts() {
       this.service.getAllProducts().subscribe(

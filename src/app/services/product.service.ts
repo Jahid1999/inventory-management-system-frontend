@@ -42,5 +42,23 @@ export class ProductService {
       return this.http.put<any>(this.apiUrl + "/update", body, header);
     }
     
+    public createProduct(edit_info) {
+      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var body = {
+        "name": edit_info.name,
+        "description": edit_info.description,
+        "unit": edit_info.unit,
+        "price": edit_info.price,
+    }
+
+    const header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${user.token}`)
+    };
+
+    // let options = new RequestOptions({headers: headers});
+  
+      return this.http.post<any>(this.apiUrl + "/add", body, header);
+    }
 
 }

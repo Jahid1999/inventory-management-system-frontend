@@ -220,7 +220,7 @@
                       </div>
                       <div class="form-group">
                         <label for="up"><b>Unit Price</b></label>
-                        <input disabled class="form-control" name="up" [(ngModel)]="selectedProduct.price"  placeholder="Enter Product Description">
+                        <input required  class="form-control" name="up" (input)="calculateTotalPrice($event)" [(ngModel)]="selectedProduct.price"  placeholder="Enter Product Unit Price">
                       </div>
                       <div class="form-group">
                         <label for="quantity"><b>Quantity</b> <span style="color: red;"> [ Available Quantity {{ selectedProduct.quantity }} ] </span></label>

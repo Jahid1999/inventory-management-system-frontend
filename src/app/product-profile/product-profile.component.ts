@@ -71,7 +71,7 @@ export class ProductProfileComponent implements OnInit {
       (response: any) => {
           if (response) {
               this.product = response;
-              console.log(this.product);
+              // console.log(this.product);
           }
       }
   );

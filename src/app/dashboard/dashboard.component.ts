@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as Chartist from 'chartist';
 import { Product } from '../../app/model/Product';
 import { Router } from '@angular/router';
 import { ProductService } from 'app/services/product.service';

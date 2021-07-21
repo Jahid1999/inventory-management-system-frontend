@@ -9,7 +9,7 @@
                </button>
             </div>
             <div class="col-md-4">
-                <button mat-raised-button class="btn btn-info" (click)="redirectOnClick('typography')">
+                <button mat-raised-button class="btn btn-info" (click)="redirectOnClick('reports')">
                     Reports
                </button>
             </div>
@@ -37,7 +37,7 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let product of products" class="text-center">
-                                        <td> {{product.name}} </td>
+                                        <td> <a [routerLink]="['/product', product.id]"> {{product.name}}  </a></td>
                                         <td> {{product.description}} </td>
                                         <td> {{product.unit}} </td>
                                         <td> {{product.price}} </td>

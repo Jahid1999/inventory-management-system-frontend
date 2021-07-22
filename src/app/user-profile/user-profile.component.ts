@@ -54,7 +54,7 @@ export class UserProfileComponent implements OnInit {
       (response: any) => {
           if (response) {
               this.admins = response;
-              console.log(this.admins);
+              
           }
       },
       error => {

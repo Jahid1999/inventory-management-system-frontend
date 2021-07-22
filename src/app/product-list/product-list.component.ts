@@ -66,6 +66,8 @@ export class TableListComponent implements OnInit {
  public openPurchaseModal(product) {
     this.stockForm.productid = product.id;
     this.stockForm.type = 1;
+    this.stockForm.quantity = 0;
+    this.stockForm.totalprice = 0;
 
     this.selectedProduct.name = product.name;
     this.selectedProduct.price = product.price;
@@ -74,6 +76,8 @@ export class TableListComponent implements OnInit {
  public openSaleModal(product) {
   this.stockForm.productid = product.id;
   this.stockForm.type = 0;
+  this.stockForm.quantity = 0;
+    this.stockForm.totalprice = 0;
 
   this.selectedProduct.name = product.name;
   this.selectedProduct.price = product.price;
@@ -184,6 +188,7 @@ public saleProduct() {
             },
             error => {
               this.closedeletebutton.nativeElement.click();
+              this.getProducts();
               this.showErrorMessage();
           }
         );

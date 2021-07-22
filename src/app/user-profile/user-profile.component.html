@@ -43,11 +43,11 @@
                                 <div>
                                   <div class="form-group">
                                     <label for="name"><b>Name</b></label>
-                                    <input required class="form-control" name="name" [(ngModel)]="userEditForm.name" placeholder="Enter Name" >
+                                    <input autocomplete="off" required class="form-control" name="name" [(ngModel)]="userEditForm.name" placeholder="Enter Name" >
                                   </div>
                                   <div class="form-group">
                                     <label for="name"><b>Email</b></label>
-                                    <input required class="form-control" name="email" [(ngModel)]="userEditForm.email"  placeholder="Enter Email">
+                                    <input autocomplete="off" required class="form-control" name="email" [(ngModel)]="userEditForm.email"  placeholder="Enter Email">
                                   </div>
                                   <div class="form-group">
                                     <label for="name"><b>Password</b></label>
@@ -77,7 +77,9 @@
           
           <div class="col-md-6">
             <button mat-raised-button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal">
-              Add Admin</button>
+              <i class="material-icons">add</i>
+              Add New Admin
+            </button>
             <div class="clearfix"></div>
 
             <div class="card">
@@ -117,11 +119,11 @@
                       <div>
                         <div class="form-group">
                           <label for="name"><b>Name</b></label>
-                          <input required class="form-control" name="name" [(ngModel)]="userAddForm.name" placeholder="Enter Name" >
+                          <input autocomplete="off" required class="form-control" name="name" [(ngModel)]="userAddForm.name" placeholder="Enter Name" >
                         </div>
                         <div class="form-group">
                           <label for="email"><b>Email</b></label>
-                          <input required class="form-control" name="email" [(ngModel)]="userAddForm.email"  placeholder="Enter Email">
+                          <input autocomplete="off" required class="form-control" name="email" [(ngModel)]="userAddForm.email"  placeholder="Enter Email">
                         </div>
                         <div class="form-group">
                           <label for="password"><b>Password</b></label>

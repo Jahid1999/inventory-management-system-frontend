@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead class="text-primary text-center">
+                        <thead class="text-primary text-center" style="font-weight: bold;">
                             <th> Name </th>
                             <th> Description </th>
                             <th> Unit </th>
@@ -24,25 +24,25 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let product of products" class="text-center">
-                                <td> <a [routerLink]="['/product', product.id]"> {{product.name}} </a> </td>
+                                <td style="font-weight: 450;"> <a [routerLink]="['/product', product.id]"> {{product.name}} </a> </td>
                                 <td> {{product.description}} </td>
                                 <td> {{product.unit}} </td>
                                 <td> {{product.price}} </td>
-                                <td>
-                                    <button mat-raised-button type="button" (click)="openEditModal(product)" style="background-color: darkslateblue;" class="btn pull-right" data-toggle="modal" data-target="#editModal">
+                                <td style="width: 40%;">
+                                    <button mat-raised-button type="button" (click)="openEditModal(product)" style="background-color: darkslateblue;" class="btn" data-toggle="modal" data-target="#editModal">
                                       <i class="material-icons">edit</i> 
                                       Edit
                                     </button> 
-                                    <button mat-raised-button type="button" (click)="setDeleteId(product)" class="btn btn-danger pull-right" data-toggle="modal" data-target="#deleteModal">
+                                    <button mat-raised-button type="button" (click)="setDeleteId(product)" class="btn btn-danger " data-toggle="modal" data-target="#deleteModal">
                                       <i class="material-icons">delete</i> 
                                       Delete
                                     </button>
-                                    <button mat-raised-button type="button" (click)="openPurchaseModal(product)" style="background-color:darkseagreen;" class="btn pull-right" data-toggle="modal" data-target="#purchaseModal">
+                                    <button mat-raised-button type="button" (click)="openPurchaseModal(product)" style="background-color:rgb(53, 100, 53);" class="btn " data-toggle="modal" data-target="#purchaseModal">
                                       <i class="material-icons">shopping_cart</i> 
                                       Purchase
                                     </button>  
                                     
-                                    <button mat-raised-button type="button" (click)="openSaleModal(product)" style="background-color:indianred;" class="btn pull-right" data-toggle="modal" data-target="#saleModal">
+                                    <button mat-raised-button type="button" (click)="openSaleModal(product)" style="background-color:rgb(77, 20, 20);" class="btn" data-toggle="modal" data-target="#saleModal">
                                       <i class="material-icons">remove_shopping_cart</i> 
                                       Sale
                                     </button>  
@@ -68,19 +68,19 @@
                     <div>
                       <div class="form-group">
                         <label for="name"><b>Name</b></label>
-                        <input required class="form-control" name="name" [(ngModel)]="productEditForm.name" placeholder="Enter Product Name" >
+                        <input autocomplete="off" required class="form-control" name="name" [(ngModel)]="productEditForm.name" placeholder="Enter Product Name" >
                       </div>
                       <div class="form-group">
                         <label for="description"><b>Description</b></label>
-                        <input required class="form-control" name="description" [(ngModel)]="productEditForm.description"  placeholder="Enter Product Description">
+                        <input autocomplete="off" required class="form-control" name="description" [(ngModel)]="productEditForm.description"  placeholder="Enter Product Description">
                       </div>
                       <div class="form-group">
                         <label for="unit"><b>Unit</b></label>
-                        <input required class="form-control" name="unit" [(ngModel)]="productEditForm.unit"  placeholder="Enter Unit">
+                        <input autocomplete="off" required class="form-control" name="unit" [(ngModel)]="productEditForm.unit"  placeholder="Enter Unit">
                       </div>
                       <div class="form-group">
                         <label for="price"><b>Unit Price</b></label>
-                        <input type="number" required class="form-control" name="price" [(ngModel)]="productEditForm.price"  placeholder="Enter Unit Price">
+                        <input autocomplete="off" type="number" required class="form-control" name="price" [(ngModel)]="productEditForm.price"  placeholder="Enter Unit Price">
                       </div>
                     
                     </div>
@@ -109,19 +109,19 @@
                     <div>
                       <div class="form-group">
                         <label for="name"><b>Name</b></label>
-                        <input required class="form-control" name="name" [(ngModel)]="productAddForm.name" placeholder="Enter Product Name" >
+                        <input autocomplete="off" required class="form-control" name="name" [(ngModel)]="productAddForm.name" placeholder="Enter Product Name" >
                       </div>
                       <div class="form-group">
                         <label for="description"><b>Description</b></label>
-                        <input required class="form-control" name="description" [(ngModel)]="productAddForm.description"  placeholder="Enter Product Description">
+                        <input autocomplete="off" required class="form-control" name="description" [(ngModel)]="productAddForm.description"  placeholder="Enter Product Description">
                       </div>
                       <div class="form-group">
                         <label for="unit"><b>Unit</b></label>
-                        <input required class="form-control" name="unit" [(ngModel)]="productAddForm.unit"  placeholder="Enter Unit">
+                        <input autocomplete="off" required class="form-control" name="unit" [(ngModel)]="productAddForm.unit"  placeholder="Enter Unit">
                       </div>
                       <div class="form-group">
                         <label for="price"><b>Unit Price</b></label>
-                        <input type="number" required class="form-control" name="price" [(ngModel)]="productAddForm.price"  placeholder="Enter Unit Price">
+                        <input autocomplete="off" type="number" required class="form-control" name="price" [(ngModel)]="productAddForm.price"  placeholder="Enter Unit Price">
                       </div>
                     
                     </div>
@@ -183,7 +183,7 @@
                       </div>
                       <div class="form-group">
                         <label for="quantity"><b>Quantity</b></label>
-                        <input type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Quantity">
+                        <input autocomplete="off" type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Quantity">
                       </div>
                       <div class="form-group">
                         <label for="price"><b>Total Price</b></label>
@@ -220,11 +220,11 @@
                       </div>
                       <div class="form-group">
                         <label for="up"><b>Unit Price</b></label>
-                        <input required  class="form-control" name="up" (input)="calculateTotalPrice($event)" [(ngModel)]="selectedProduct.price"  placeholder="Enter Product Unit Price">
+                        <input autocomplete="off" required  class="form-control" name="up" (input)="calculateTotalPrice($event)" [(ngModel)]="selectedProduct.price"  placeholder="Enter Product Unit Price">
                       </div>
                       <div class="form-group">
                         <label for="quantity"><b>Quantity</b> <span style="color: red;"> [ Available Quantity {{ selectedProduct.quantity }} ] </span></label>
-                        <input type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Quantity">
+                        <input autocomplete="off" type="number" (input)="calculateTotalPrice($event)" required class="form-control" name="quantity" [(ngModel)]="stockForm.quantity"  placeholder="Enter Quantity">
                       </div>
                       <div class="form-group">
                         <label for="price"><b>Total Price</b></label>

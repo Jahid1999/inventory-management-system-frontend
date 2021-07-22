@@ -1,0 +1,115 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-info">
+                    <h3 class="card-title ">Stock Status Report</h3>
+                    <p class="card-category text-primary">Current Stock Status</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-primary text-center">
+                                <th> Name </th>
+                                <th> Description </th>
+                                <th> Unit </th>
+                                <th> Unit Price </th>
+                                <th> Quantity </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of products" class="text-center">
+                                    <td> <a [routerLink]="['/product', product.id]"> {{product.name}}  </a></td>
+                                    <td> {{product.description}} </td>
+                                    <td> {{product.unit}} </td>
+                                    <td> {{product.price}} </td>
+                                    <td> <b> {{product.quantity}} </b> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label>Select User Type</label>
+        <select required class="form-control" id="type" name="type" [(ngModel)]="reportType" (input)="calculateTotalPrice($event)" >
+            <option value="daily">Daily</option>
+            <option value="monthly">Monthly</option>
+        </select>
+    </div>  -->
+    <hr>
+    <div style="padding-top: 20px; padding-bottom: 10px;color: crimson;">
+        <h2><i>Transaction Report</i></h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <mat-form-field appearance="fill">
+                <mat-label>Choose Report Type</mat-label>
+                <!-- <mat-select-trigger>{{reportType}}</mat-select-trigger> -->
+                <mat-select placeholder="Chose an option" (selectionChange)="calculateTotalPrice($event)" [(value)] = "reportType">
+                    <mat-option value="daily">Daily</mat-option>
+                    <mat-option value="monthly">Monthly</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="col-md-6 col-lg-6">
+
+            <div *ngIf="isDailyReport">
+                <label for="sdate">Select Date:</label> <br>
+                <input type="date" id="sdate" name="sdate" placeholder="Select a Date" (input)="dailyReport($event)">
+            </div>
+
+            <div *ngIf="isMonthlyReport">
+                <label for="smonth">Select Month:</label> <br>
+                <input type="month" id="smonth" name="smonth" placeholder="Select a Month" (input)="monthlyReport($event)">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h3 class="card-title">Transaction Report</h3>
+                    <p class="card-category text-black" *ngIf="isDailyReport"> Daily Transaction Report</p>
+                    <p class="card-category text-black" *ngIf="isMonthlyReport"> Monthly Transaction Report</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-primary text-center">
+                                <th> Type </th>
+                                <th> Product </th>
+                                <th> Quantity </th>
+                                <th> Total Price </th>
+                                <th> Date </th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let transaction of transactions" class="text-center">
+                                    <td>
+                                        <p *ngIf="transaction.type == 0" style="color: red; font-weight: bold;">
+                                            Sale
+                                        </p>
+                                        <p *ngIf="transaction.type == 1" style="color: green; font-weight: bold;">
+                                            Purchase
+                                        </p>
+                                    </td>
+                                    <td style="font-weight: 500;"> {{ transaction.productid }} </td>
+                                    <td> {{ transaction.quantity }} </td>
+                                    <td> {{ transaction.totalprice }} </td>
+                                    <td> {{ transaction.treansactiondate | date }} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       
+</div>

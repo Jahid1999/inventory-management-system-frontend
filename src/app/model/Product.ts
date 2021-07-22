@@ -1,9 +1,9 @@
 export class Product{
-    public Id: number | any ;
-    public Name: string | undefined ;
-    public Description: string | undefined  ;
-    public Unit: string | undefined ;
-    public Price: number | any ;
-    public Quantity:number | any ;
+    public id: number | any ;
+    public name: string | undefined ;
+    public description: string | undefined  ;
+    public unit: string | undefined ;
+    public price: number | any ;
+    public quantity:number | any ;
 
 }

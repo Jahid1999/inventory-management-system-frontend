@@ -120,4 +120,24 @@ export class ProductService {
       return this.http.delete<any>(this.apiUrl + "/delete/" + id, header);
     }
 
+    public getDailyReport(date) {
+      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var header = {
+        headers: new HttpHeaders()
+          .set('Authorization',  `Bearer ${user.token}`)
+      };
+
+        return this.http.get<any>(this.apiUrl + `/report/daily/${date}`, header);
+    }
+
+    public getMonthlyReport(month) {
+      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var header = {
+        headers: new HttpHeaders()
+          .set('Authorization',  `Bearer ${user.token}`)
+      };
+
+        return this.http.get<any>(this.apiUrl + `/report/monthly/${month}`, header);
+    }
+
 }

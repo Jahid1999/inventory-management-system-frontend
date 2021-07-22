@@ -29,7 +29,6 @@ export class UserProfileComponent implements OnInit {
      this.userinfo.name = user.data.name;
      this.userinfo.email = user.data.email;
      this.userinfo.password = user.data.password;
-     console.log(user.data);
   }
 
   public openEditModal() {

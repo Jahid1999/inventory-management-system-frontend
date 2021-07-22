@@ -48,7 +48,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Choose Report Type</mat-label>
                 <!-- <mat-select-trigger>{{reportType}}</mat-select-trigger> -->
-                <mat-select placeholder="Chose an option" (selectionChange)="calculateTotalPrice($event)" [(value)] = "reportType">
+                <mat-select placeholder="Chose an option" (selectionChange)="setReportType($event)" [(value)] = "reportType">
                     <mat-option value="daily">Daily</mat-option>
                     <mat-option value="monthly">Monthly</mat-option>
                 </mat-select>

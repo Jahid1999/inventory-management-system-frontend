@@ -30,7 +30,7 @@ export class ReportComponent implements OnInit {
     this.router.navigateByUrl(path);
   }
 
-  public calculateTotalPrice(event: Event) {
+  public setReportType(event: Event) {
       if(this.reportType == 'monthly') {
         this.isMonthlyReport = true;
         this.isDailyReport = false;

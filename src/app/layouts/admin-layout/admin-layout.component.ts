@@ -22,7 +22,7 @@ export class AdminLayoutComponent implements OnInit {
     }
 
   ngOnInit() {
-      if (!localStorage.getItem('isLoggedIn')) {
+      if (!localStorage.getItem('userInfo')) {
           this.router.navigateByUrl('login');
       }
   }

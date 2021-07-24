@@ -13,7 +13,7 @@ export class ProductService {
 
   
     public getAllProducts() {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var header = {
         headers: new HttpHeaders()
           .set('Authorization',  `Bearer ${user.token}`)
@@ -23,7 +23,7 @@ export class ProductService {
     }
 
     public getProductById(id) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var header = {
         headers: new HttpHeaders()
           .set('Authorization',  `Bearer ${user.token}`)
@@ -33,7 +33,7 @@ export class ProductService {
     }
 
     public updateProduct(edit_info) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var body = {
         "id": edit_info.id,
         "name": edit_info.name,
@@ -53,7 +53,7 @@ export class ProductService {
     }
     
     public createProduct(edit_info) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var body = {
         "name": edit_info.name,
         "description": edit_info.description,
@@ -72,7 +72,7 @@ export class ProductService {
     }
 
     public purchaseProduct(info) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var body = {
         "type": info.type,
         "productid":info.productid,
@@ -91,7 +91,7 @@ export class ProductService {
     }
 
     public saleProduct(info) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var body = {
         "type": info.type,
         "productid":info.productid,
@@ -110,7 +110,7 @@ export class ProductService {
     }
 
     public deleteProduct(id) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
     
       const header = {
         headers: new HttpHeaders()
@@ -121,7 +121,7 @@ export class ProductService {
     }
 
     public getDailyReport(date) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var header = {
         headers: new HttpHeaders()
           .set('Authorization',  `Bearer ${user.token}`)
@@ -131,7 +131,7 @@ export class ProductService {
     }
 
     public getMonthlyReport(month) {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var header = {
         headers: new HttpHeaders()
           .set('Authorization',  `Bearer ${user.token}`)

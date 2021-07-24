@@ -94,6 +94,10 @@ public calculateTotalPrice(event: Event) {
       alert("Qunatity must be less then or equal to " + this.selectedProduct.quantity);
       this.stockForm.quantity = 0;
     }
+    else if (this.stockForm.quantity != null && this.stockForm.quantity < 0) {
+      alert("Qunatity must be greater than 0");
+      this.stockForm.quantity = 0;
+    }
 }
 
 // purchase 

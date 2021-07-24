@@ -12,7 +12,7 @@ export class LoginLayoutComponent implements OnInit {
     constructor(public service: AuthService, private router: Router) { }
 
     ngOnInit(): void {
-        if (localStorage.getItem('isLoggedIn')) {
+        if (localStorage.getItem('userInfo')) {
             this.router.navigateByUrl('dashboard');
         }
     }
@@ -22,7 +22,7 @@ export class LoginLayoutComponent implements OnInit {
         this.service.adminSignInOperation().subscribe(
             (response: any) => {
                 if (response) {
-                    localStorage.setItem('isLoggedIn', JSON.stringify(response));
+                    localStorage.setItem('userInfo', JSON.stringify(response));
                     this.router.navigate(["dashboard"]);
                     this.service.adminSignInformModel.reset();
                 }

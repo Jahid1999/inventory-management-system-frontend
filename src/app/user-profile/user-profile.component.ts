@@ -41,7 +41,7 @@ export class UserProfileComponent implements OnInit {
   constructor(public service: AdminService, private router: Router) { }
 
   ngOnInit() {
-     var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+     var user = JSON.parse(localStorage.getItem('userInfo'));
      this.userinfo.name = user.data.name;
      this.userinfo.email = user.data.email;
      this.userinfo.password = user.data.password;
@@ -64,7 +64,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   public openEditModal() {
-     var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+     var user = JSON.parse(localStorage.getItem('userInfo'));
      this.userEditForm.id = user.data.id;
      this.userEditForm.name = user.data.name;
      this.userEditForm.email = user.data.email;
@@ -108,6 +108,8 @@ export class UserProfileComponent implements OnInit {
               this.userAddForm.email = '';
               this.userAddForm.password = '';
               this.userAddForm.confirm_password = '';
+
+              this.getAdmins();
           }
           
       },

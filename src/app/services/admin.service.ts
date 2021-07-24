@@ -12,7 +12,7 @@ export class AdminService {
     public apiUrl = "http://localhost:5000/api/admin";
 
     public getAddAdmin() {
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var header = {
         headers: new HttpHeaders()
           .set('Authorization',  `Bearer ${user.token}`)
@@ -23,7 +23,7 @@ export class AdminService {
 
     public updateAdmin(edit_info) {
 
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var body = {
         "id": edit_info.id,
         "name": edit_info.name,
@@ -43,7 +43,7 @@ export class AdminService {
 
     public addAdmin(admin_info) {
 
-      var user = JSON.parse(localStorage.getItem('isLoggedIn'));
+      var user = JSON.parse(localStorage.getItem('userInfo'));
       var body = {
         "name": admin_info.name,
         "email": admin_info.email,

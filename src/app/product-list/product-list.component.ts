@@ -163,11 +163,21 @@ public saleProduct() {
   public createProduct() {
       this.service.createProduct(this.productAddForm).subscribe(
         (response: any) => {
+          if(response.statusCode == 202) {
+            alert('This product name already exixts. Please try with a new one');
+          }
+          else {
             if (response) {
-                this.closeaddbutton.nativeElement.click();
-                this.getProducts();
-                this.showSuccessMessage();
-            }
+              this.closeaddbutton.nativeElement.click();
+              this.getProducts();
+              this.showSuccessMessage();
+            
+              this.productAddForm.name = '';
+              this.productAddForm.description = '';
+              this.productAddForm.unit = '';
+              this.productAddForm.price = null;
+          }
+          }
             
         },
         error => {
@@ -225,7 +235,7 @@ public saleProduct() {
 
     },{
         type: 'success',
-        timer: 4000,
+        timer: 2000,
         placement: {
             from: 'top',
             align: 'center'
@@ -251,7 +261,7 @@ public saleProduct() {
 
     },{
         type: 'danger',
-        timer: 4000,
+        timer: 2000,
         placement: {
             from: 'top',
             align: 'center'

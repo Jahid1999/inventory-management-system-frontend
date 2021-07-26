@@ -86,7 +86,7 @@ export class ProductProfileComponent implements OnInit {
 
     },{
         type: 'success',
-        timer: 4000,
+        timer: 2000,
         placement: {
             from: 'top',
             align: 'center'
@@ -112,7 +112,7 @@ export class ProductProfileComponent implements OnInit {
 
     },{
         type: 'danger',
-        timer: 4000,
+        timer: 2000,
         placement: {
             from: 'top',
             align: 'center'

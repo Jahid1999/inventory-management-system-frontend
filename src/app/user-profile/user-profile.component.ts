@@ -100,18 +100,22 @@ export class UserProfileComponent implements OnInit {
   public addUser() {
     this.service.addAdmin(this.userAddForm).subscribe(
       (response: any) => {
+        if(response.statusCode == 202) {
+          alert('This Email already exists. Please try with a new one');
+        }
+        else {
           if (response) {
-              this.closeaddbutton.nativeElement.click();
-              this.showMessage('top','center', 'success');
+            this.closeaddbutton.nativeElement.click();
+            this.showMessage('top','center', 'success');
 
-              this.userAddForm.name = '';
-              this.userAddForm.email = '';
-              this.userAddForm.password = '';
-              this.userAddForm.confirm_password = '';
+            this.userAddForm.name = '';
+            this.userAddForm.email = '';
+            this.userAddForm.password = '';
+            this.userAddForm.confirm_password = '';
 
-              this.getAdmins();
-          }
-          
+            this.getAdmins();
+        }
+        }    
       },
       error => {
         this.closeaddbutton.nativeElement.click();
@@ -148,7 +152,7 @@ export class UserProfileComponent implements OnInit {
 
     },{
         type: type,
-        timer: 4000,
+        timer: 2000,
         placement: {
             from: from,
             align: align
@@ -174,7 +178,7 @@ export class UserProfileComponent implements OnInit {
 
     },{
         type: 'danger',
-        timer: 4000,
+        timer: 2000,
         placement: {
             from: 'top',
             align: 'center'

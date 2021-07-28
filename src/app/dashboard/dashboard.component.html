@@ -42,7 +42,10 @@
                                         <td> {{product.description}} </td>
                                         <td> {{product.unit}} </td>
                                         <td> {{product.price}} </td>
-                                        <td> {{product.quantity}} </td>
+                                        <td> {{product.quantity}} 
+                                            <small *ngIf="product.quantity > 0" style="color: green;">[ Available ]</small> 
+                                            <small *ngIf="product.quantity ==0" style="color: red;">[ Stock Out ]</small>   
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -40,6 +40,7 @@ export class ProductService {
         "description": edit_info.description,
         "unit": edit_info.unit,
         "price": edit_info.price,
+        "quantity": edit_info.quantity,
     }
 
     const header = {

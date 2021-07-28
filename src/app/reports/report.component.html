@@ -23,7 +23,10 @@
                                     <td> {{product.description}} </td>
                                     <td> {{product.unit}} </td>
                                     <td> {{product.price}} </td>
-                                    <td> <b> {{product.quantity}} </b> </td>
+                                    <td> <b> {{product.quantity}} </b> 
+                                        <small *ngIf="product.quantity > 0" style="color: green;">[ Available ]</small> 
+                                        <small *ngIf="product.quantity ==0" style="color: red;">[ Stock Out ]</small>  
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -89,6 +92,13 @@
                                 <th> Date </th>
                             </thead>
                             <tbody>
+                                <tr *ngIf="transactions.length == 0" class="text-center">
+                                    <td></td>
+                                    <td></td>
+                                    <td><h3>No Transactions!!</h3></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                                 <tr *ngFor="let transaction of transactions" class="text-center">
                                     <td>
                                         <p *ngIf="transaction.type == 0" style="color: red; font-weight: bold;">

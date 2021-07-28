@@ -23,7 +23,8 @@ export class TableListComponent implements OnInit {
     name: '',
     description: '',
     unit: '',
-    price: null
+    price: null,
+    quantity: null,
   }
 
   public productAddForm = {
@@ -61,6 +62,7 @@ export class TableListComponent implements OnInit {
     this.productEditForm.description = product.description;
     this.productEditForm.unit = product.unit;
     this.productEditForm.price = product.price;
+    this.productEditForm.quantity = product.quantity;
  }
 
  public openPurchaseModal(product) {
@@ -144,11 +146,16 @@ public saleProduct() {
  public updateProduct() {
     this.service.updateProduct(this.productEditForm).subscribe(
       (response: any) => {
+        if(response.statusCode == 202) {
+          alert('This product name already exists. Please try with a new one');
+        }
+        else {
           if (response) {
-              this.closeeditbutton.nativeElement.click();
-              this.getProducts();
-              this.showSuccessMessage();
+            this.closeeditbutton.nativeElement.click();
+            this.getProducts();
+            this.showSuccessMessage();
           }
+        }
          
       },
       error => {
@@ -164,7 +171,7 @@ public saleProduct() {
       this.service.createProduct(this.productAddForm).subscribe(
         (response: any) => {
           if(response.statusCode == 202) {
-            alert('This product name already exixts. Please try with a new one');
+            alert('This product name already exists. Please try with a new one');
           }
           else {
             if (response) {
@@ -216,6 +223,7 @@ public saleProduct() {
         (response: any) => {
             if (response) {
                 this.products = response;
+          
             }
         }
     );
